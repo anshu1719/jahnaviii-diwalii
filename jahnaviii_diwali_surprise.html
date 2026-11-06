@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#260d18">
+<title>A Diwali Surprise for Jahnaviii</title>
+<style>
+:root{--gold:#ffd98a;--cream:#fff3d8;--pink:#ffb7c9;--wine:#260d18;--wine2:#431426}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--cream);font-family:Georgia,'Times New Roman',serif;background:radial-gradient(ellipse at top,#6d2635 0%,#351321 43%,#180a13 100%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:radial-gradient(#ffd98a 1px,transparent 1px);background-size:34px 34px}
+button{font:inherit;cursor:pointer}
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:34px 18px;position:relative;isolation:isolate}
+.hero-inner{max-width:720px;position:relative;z-index:2}
+.eyebrow{letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font:600 11px Arial,sans-serif}
+h1{font-size:clamp(3rem,12vw,6.4rem);line-height:.98;margin:18px 0;color:var(--gold);font-weight:500;text-shadow:0 0 28px #ffb84d66}
+.subtitle{font-size:clamp(1.05rem,3.7vw,1.35rem);line-height:1.7;color:#ffe8dc;max-width:560px;margin:18px auto 28px}
+.gold-btn{border:1px solid var(--gold);border-radius:999px;background:linear-gradient(135deg,#ffe6a8,#d99b43);color:#3a1720;padding:14px 25px;font-weight:bold;box-shadow:0 8px 30px #0005;transition:transform .2s}
+.gold-btn:active{transform:scale(.97)}
+.diya{font-size:48px;filter:drop-shadow(0 0 18px #ffb347);animation:flicker 2.2s infinite alternate;margin:16px}
+@keyframes flicker{from{filter:drop-shadow(0 0 9px #ffb347);transform:rotate(-2deg)}to{filter:drop-shadow(0 0 25px #ffdf8a);transform:rotate(2deg)}}
+.corner{position:absolute;font-size:clamp(36px,8vw,70px);opacity:.8;animation:float 4s ease-in-out infinite}
+.c1{top:8%;left:7%}.c2{top:15%;right:8%;animation-delay:1s}.c3{bottom:9%;left:12%;animation-delay:2s}.c4{bottom:12%;right:10%;animation-delay:.5s}
+@keyframes float{50%{transform:translateY(-14px) rotate(5deg)}}
+section{padding:76px 18px;position:relative}
+.wrap{max-width:850px;margin:auto}
+.section-kicker{text-align:center;color:var(--gold);letter-spacing:.22em;text-transform:uppercase;font:600 10px Arial,sans-serif}
+h2{text-align:center;color:var(--gold);font-size:clamp(2rem,7vw,3.2rem);font-weight:500;margin:12px 0 25px}
+.card{background:linear-gradient(145deg,#ffffff12,#ffffff06);border:1px solid #f7d48c55;border-radius:24px;padding:clamp(22px,5vw,42px);box-shadow:0 18px 55px #0003;backdrop-filter:blur(8px)}
+.message{text-align:center;font-size:clamp(1.08rem,3.5vw,1.3rem);line-height:1.9;color:#ffefdf}
+.signature{color:var(--gold);font-style:italic;margin-top:22px}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.photo{min-height:155px;aspect-ratio:1/1;border:1px dashed #f5d18a88;border-radius:18px;background:linear-gradient(145deg,#6b2a3d,#351321);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;color:#ffe6bd;padding:12px;position:relative}
+.photo img{position:absolute;width:100%;height:100%;object-fit:cover;inset:0}
+.photo span{font:13px Arial,sans-serif;line-height:1.5}
+.upload{display:block;margin:18px auto 0;max-width:100%;font:13px Arial,sans-serif;color:#ffe9ca}
+.note{text-align:center;color:#f3d7ca;font:12px/1.6 Arial,sans-serif;margin-top:12px}
+.final{text-align:center}
+.final p{font-size:1.2rem;line-height:1.8}
+footer{text-align:center;padding:25px 15px 40px;color:#d9b6a7;font:12px Arial,sans-serif}
+.music{position:fixed;z-index:10;right:15px;top:15px;border:1px solid #f6d28b99;background:#351321eF;color:var(--gold);border-radius:999px;padding:10px 14px;font:13px Arial,sans-serif;box-shadow:0 5px 20px #0005}
+#fireworks{position:fixed;inset:0;z-index:5;pointer-events:none}
+.hidden{display:none!important}
+.reveal{animation:reveal .9s ease both}
+@keyframes reveal{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:650px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.photo{aspect-ratio:4/3}}
+</style>
+</head>
+<body>
+<canvas id="fireworks"></canvas>
+<button class="music" id="musicBtn" aria-label="Toggle background music">♫ Play music</button>
+<header class="hero" id="home">
+  <div class="corner c1">🪔</div><div class="corner c2">✨</div><div class="corner c3">🌼</div><div class="corner c4">🪔</div>
+  <div class="hero-inner">
+    <div class="eyebrow">A little festival surprise</div>
+    <div class="diya">🪔</div>
+    <h1>For Jahnaviii</h1>
+    <p class="subtitle">This Diwali, may your world glow with a thousand little reasons to smile.</p>
+    <button class="gold-btn" id="openBtn">Open your surprise ✨</button>
+    <p class="note">Made with warmth, just for you.</p>
+  </div>
+</header>
+<main id="surprise" class="hidden">
+  <section>
+    <div class="wrap">
+      <div class="section-kicker">A message for you</div>
+      <h2>Happy Diwali, Jahnaviii</h2>
+      <div class="card message reveal">
+        May this festival bring you happiness that stays, peace that comforts you, and dreams that shine brighter every day.
+        <br><br>
+        I hope your days are filled with beautiful moments, your heart stays light, and you always find a reason to smile. Just like the little diyas brighten the night, your presence brings a special warmth to the people around you.
+        <div class="signature">Wishing you a magical Diwali ❤️</div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="section-kicker">Little memories</div>
+      <h2>Our photo corner</h2>
+      <div class="card">
+        <div class="gallery-grid" id="gallery">
+          <label class="photo"><span>＋<br>Add a favourite photo</span><input hidden type="file" accept="image/*"></label>
+          <label class="photo"><span>＋<br>Add another memory</span><input hidden type="file" accept="image/*"></label>
+          <label class="photo"><span>＋<br>One more lovely moment</span><input hidden type="file" accept="image/*"></label>
+        </div>
+        <input class="upload" id="multiUpload" type="file" accept="image/*" multiple aria-label="Choose photos">
+        <p class="note">Choose photos from your phone. They appear here on this device and are not uploaded anywhere.</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap final">
+      <div class="section-kicker">One last thing</div>
+      <h2>Keep shining ✨</h2>
+      <div class="card">
+        <p>May every new beginning bring you closer to the things that make you happy. Have the loveliest Diwali, Jahnaviii!</p>
+        <div class="diya">🪔</div>
+        <button class="gold-btn" id="againBtn">Celebrate again 🎆</button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>Made with ❤️ and a little Diwali sparkle</footer>
+<script>
+const openBtn=document.getElementById('openBtn');
+const surprise=document.getElementById('surprise');
+openBtn.addEventListener('click',()=>{
+  surprise.classList.remove('hidden');
+  surprise.classList.add('reveal');
+  surprise.scrollIntoView({behavior:'smooth'});
+  burst(95);
+});
+document.getElementById('againBtn').addEventListener('click',()=>burst(130));
+
+// Local photo previews; nothing is sent to a server.
+const gallery=document.getElementById('gallery');
+function addPhoto(file){
+  if(!file || !file.type.startsWith('image/')) return;
+  const url=URL.createObjectURL(file);
+  const cell=document.createElement('div');cell.className='photo';
+  const img=document.createElement('img');img.src=url;img.alt='A selected memory';
+  cell.appendChild(img);gallery.appendChild(cell);
+}
+document.getElementById('multiUpload').addEventListener('change',e=>{
+  [...e.target.files].forEach(addPhoto);e.target.value='';
+});
+
+// Original gentle chime melody made with Web Audio; starts only after a tap.
+let audioCtx=null, musicTimer=null, noteIndex=0, musicOn=false;
+const notes=[523.25,659.25,783.99,659.25,587.33,659.25,523.25,392.00];
+function playNote(){
+  if(!audioCtx||!musicOn)return;
+  const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+  osc.type='sine';osc.frequency.value=notes[noteIndex++%notes.length];
+  gain.gain.setValueAtTime(.0001,audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(.055,audioCtx.currentTime+.04);
+  gain.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.55);
+  osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+.58);
+}
+const musicBtn=document.getElementById('musicBtn');
+musicBtn.addEventListener('click',async()=>{
+  if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==='suspended')await audioCtx.resume();
+  musicOn=!musicOn;
+  if(musicOn){playNote();musicTimer=setInterval(playNote,620);musicBtn.textContent='♫ Pause music';}
+  else{clearInterval(musicTimer);musicBtn.textContent='♫ Play music';}
+});
+
+// Lightweight fireworks canvas.
+const canvas=document.getElementById('fireworks'),ctx=canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=innerWidth*devicePixelRatio;H=canvas.height=innerHeight*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+addEventListener('resize',resize);resize();
+function burst(count=65){
+  const x=Math.random()*innerWidth,y=Math.random()*innerHeight*.55+innerHeight*.08;
+  for(let i=0;i<count;i++){const a=Math.PI*2*i/count,s=1.5+Math.random()*4.2;particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:55+Math.random()*30,max:85,hue:35+Math.random()*45})}
+}
+function animate(){
+  ctx.clearRect(0,0,innerWidth,innerHeight);
+  particles=particles.filter(p=>p.life>0);
+  for(const p of particles){p.x+=p.vx;p.y+=p.vy;p.vy+=.035;p.vx*=.99;p.life--;ctx.globalAlpha=Math.max(0,p.life/p.max);ctx.fillStyle=`hsl(${p.hue},100%,70%)`;ctx.beginPath();ctx.arc(p.x,p.y,2,0,Math.PI*2);ctx.fill()}
+  ctx.globalAlpha=1;requestAnimationFrame(animate);
+}
+animate();
+setTimeout(()=>burst(45),800);
+</script>
+</body>
+</html>
